@@ -1,12 +1,30 @@
 import './style.scss'
 
-function setCookie(){
-  if(!document.cookie.includes('isViisted')){
-    const date = new Date();
-    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-    const expires =  'expires=' + date.toUTCString();
-    document.cookie = "isVisited=true; " + expires + ";"; // secure; HttpOnly; Añadir al construirlo en el servidor
+/*function displayWelcomeMessage() {
+  if (document.cookie.includes('isVisited')) {
+    console.log('Welcome back!');
+  } else {
+    
   }
 }
 
+// Llama a esta función para mostrar el mensaje de bienvenida
+displayWelcomeMessage();*/
+
+function setCookie() {
+  const welcomeDiv = document.getElementById('welcomeMessage');
+
+  if (!document.cookie.includes('isVisited')) {
+    welcomeDiv.innerHTML = 'BIENVENIDO A MI PÁGINA WEB';
+  }else{
+    welcomeDiv.innerHTML = 'Hola de nuevo';
+  }
+
+  const date = new Date();
+  date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+  const expires = 'expires=' + date.toUTCString();
+  document.cookie = 'isVisited=true; ' + expires + ';';
+}
+
+// Llama a la función para mostrar el mensaje de bienvenida
 setCookie();
