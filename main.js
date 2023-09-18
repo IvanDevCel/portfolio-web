@@ -1,14 +1,19 @@
 import './style.scss'
+import './lang.js'
 
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
-    const welcomeDiv = document.getElementById('welcomeMessage');
-
     if (!document.cookie.includes('isVisited')) {
       let welcomeBlock = document.querySelectorAll('#welcomeMessage .boxContainer');
-      welcomeBlock.forEach(function(element){
-        element.style.display = 'block';
-      })
+      let btnNext = document.querySelectorAll('.nxt-elem');
+      welcomeBlock[0].style.display = 'block';
+      
+      btnNext.forEach(function(element, index){
+        element.addEventListener('click', function() {
+            welcomeBlock[index + 1].style.display = 'block';
+            welcomeBlock[index].style.display = 'none';
+        });
+      });
     }
 
     const date = new Date();
@@ -26,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //console.log(toggleButton);
   }
   
-  document.querySelector('.toggle-theme').addEventListener('click', toggleTheme);
-
+  document.querySelectorAll('.toggle-theme').forEach(function(button) {
+    button.addEventListener('click', toggleTheme);
+  });
 });
 

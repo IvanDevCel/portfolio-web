@@ -7,22 +7,31 @@
   </head>
   <script type="module" src="/main.js"></script>
   <body>
-    <nav class="navBar">
-      <span>ICS Portfolio</span>
-      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-    </nav>
-    
     <div id="welcomeMessage">
       <div class="boxContainer" hidden>
         <span>Bienvenido a mi portfolio personal, Soy Iván, un desarrollador front-end</span>
+        <button class="nxt-elem"> Continuar -></button>
       </div>
       <div class="boxContainer" hidden>
         <span>Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+        <button class="nxt-elem"> Continuar -></button>
       </div>
       <div class="boxContainer" hidden>
         <span>Este es el idioma que hemos detectado en su equipo ¿Es correcto?</span>
+        <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+        <select name="idiom" id="idiomSel">
+          <option value="es">Español</option>
+          <option value="en">Inglés</option>
+        </select>
       </div>
     </div>
-    
+    <nav class="navBar">
+      <span>ICS Portfolio</span>
+      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+      <select name="idiom" id="idiomSel">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+      </select>
+    </nav>    
   </body>
 </html>
