@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
   </head>
-  <script type="module" src="/main.js"></script>
+  <script defer type="module" src="/main.js"></script>
   <body>
+    <nav class="navBar">
+      <span>ICS Portfolio</span>
+      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+      <select name="idiom" id="idiomSel">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+      </select>
+    </nav>
     <div id="welcomeMessage">
       <div class="boxContainer" hidden>
         <span>Bienvenido a mi portfolio personal, Soy Iván, un desarrollador front-end</span>
@@ -23,15 +31,8 @@
           <option value="es">Español</option>
           <option value="en">Inglés</option>
         </select>
+        <button class="nxt-elem"> Finalizar configuración</button>
       </div>
-    </div>
-    <nav class="navBar">
-      <span>ICS Portfolio</span>
-      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-      <select name="idiom" id="idiomSel">
-        <option value="es">Español</option>
-        <option value="en">Inglés</option>
-      </select>
-    </nav>    
+    </div>    
   </body>
 </html>

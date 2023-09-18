@@ -3,17 +3,24 @@ import './lang.json'
 
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
-    if (!document.cookie.includes('isVisited')) {
+    if (!document.cookie.includes('isVisited=')) {
       let welcomeBlock = document.querySelectorAll('#welcomeMessage .boxContainer');
       let btnNext = document.querySelectorAll('.nxt-elem');
-      welcomeBlock[0].style.display = 'block';
-      
-      btnNext.forEach(function(element, index){
+      welcomeBlock[0].style.display = 'flex';
+      welcomeBlock[0].style.position = 'fixed';
+
+      btnNext.forEach((element, index) => {
         element.addEventListener('click', function() {
-            welcomeBlock[index + 1].style.display = 'block';
+            if(index >= welcomeBlock.length - 1){
+              document.querySelector('#welcomeMessage').style.display = 'none';
+            }else{
+              welcomeBlock[index + 1].style.display = 'flex';
+            }
             welcomeBlock[index].style.display = 'none';
         });
       });
+    }else{
+        document.querySelector('#welcomeMessage').style.display = 'none';
     }
 
     const date = new Date();
@@ -35,4 +42,3 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', toggleTheme);
   });
 });
-

@@ -1,19 +1,38 @@
 
 /*Tema negro de la web*/
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
 .navBar{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+/*Tema oscuro que hay en la web*/
 .dark-theme{
     background-color:black;
-    p,a, div, span{
+    #welcomeMessage{
+        background-color:black;
+        color: white;
+    }
+    h1, h2, h3, h4, h5, h6, p, a, div, span {
         color: white;
     }
 }
 
-#app{
-    .vite-container{
-        color: green;
+#welcomeMessage{
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .boxContainer {
+        flex-direction: column;
+        color: black;
+        font-size: 50px;
     }
 }
