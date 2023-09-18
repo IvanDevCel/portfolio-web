@@ -1,3 +1,10 @@
+
+/*Tema negro de la web*/
+.navBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .dark-theme{
     background-color:black;
     p,a, div, span{

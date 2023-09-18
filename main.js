@@ -1,31 +1,14 @@
 import './style.scss'
 
-/*function displayWelcomeMessage() {
-  if (document.cookie.includes('isVisited')) {
-    console.log('Welcome back!');
-  } else {
-    
-  }
-}
-
-// Llama a esta función para mostrar el mensaje de bienvenida
-displayWelcomeMessage();*/
-  function toggleTheme() {
-    const bodyToggle = document.body;
-    bodyToggle.classList.toggle('dark-theme');
-    //console.log(toggleButton);
-  }
-  document.querySelector('.toggle-theme').addEventListener('click', toggleTheme);
-
-
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
     const welcomeDiv = document.getElementById('welcomeMessage');
 
     if (!document.cookie.includes('isVisited')) {
-      welcomeDiv.innerHTML = 'BIENVENIDO A MI PÁGINA WEB';
-    }else{
-      welcomeDiv.innerHTML = 'Hola de nuevo';
+      let welcomeBlock = document.querySelectorAll('#welcomeMessage .boxContainer');
+      welcomeBlock.forEach(function(element){
+        element.style.display = 'block';
+      })
     }
 
     const date = new Date();
@@ -36,6 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Llama a la función para mostrar el mensaje de bienvenida
   setCookie();
+
+  function toggleTheme() {
+    const bodyToggle = document.body;
+    bodyToggle.classList.toggle('dark-theme');
+    //console.log(toggleButton);
+  }
+  
+  document.querySelector('.toggle-theme').addEventListener('click', toggleTheme);
 
 });
 

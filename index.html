@@ -7,10 +7,22 @@
   </head>
   <script type="module" src="/main.js"></script>
   <body>
-    <div id="welcomeMessage"></div>
-    <div id="">
-      <div class="vite-container">¡¡HELLO SASS!!</div>
+    <nav class="navBar">
+      <span>ICS Portfolio</span>
+      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+    </nav>
+    
+    <div id="welcomeMessage">
+      <div class="boxContainer" hidden>
+        <span>Bienvenido a mi portfolio personal, Soy Iván, un desarrollador front-end</span>
+      </div>
+      <div class="boxContainer" hidden>
+        <span>Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+      </div>
+      <div class="boxContainer" hidden>
+        <span>Este es el idioma que hemos detectado en su equipo ¿Es correcto?</span>
+      </div>
     </div>
-    <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+    
   </body>
 </html>
