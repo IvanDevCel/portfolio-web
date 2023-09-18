@@ -1,5 +1,5 @@
 import './style.scss'
-import './lang.js'
+import './lang.json'
 
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
