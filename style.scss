@@ -1,3 +1,10 @@
+.dark-theme{
+    background-color:black;
+    p,a, div, span{
+        color: white;
+    }
+}
+
 #app{
     .vite-container{
         color: green;
