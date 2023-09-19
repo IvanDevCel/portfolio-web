@@ -28,8 +28,39 @@ body, html {
     margin: 0;
 }
 
-/*Typewrite effect!!*/
+/*Tema oscuro que hay en la web*/
+.dark-theme{
+    background-color:black;
+    .typewriter {
+        --bgColor: black;
+    }
+    #welcomeMessage{
+        background-color:black;
+        color: white;
+    }
+    h1, h2, h3, h4, h5, h6, p, a, div, span {
+        color: white;
+    }
+}
+/*Mensaje de bienvenida la primera vez de entrar a al web*/
+#welcomeMessage{
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    position: relative;
+    align-items: center;
+    z-index: 99;
+    bottom: 21px;
+    .boxContainer {
+        padding: 0rem 10rem 0rem 10rem;
+        flex-direction: column;
+        color: black;
+        font-size: 55px;
+        font-weight: 500;
+    }
+}
 
+/*Typewrite effect!!*/
 @keyframes grow {
     0% { max-height: var(--lineHeight); }
     100% { max-height: calc(var(--lineHeight) * var(--lines)); }
@@ -80,38 +111,6 @@ body, html {
     width: 100%;
   }
 /**/
-
-/*Tema oscuro que hay en la web*/
-.dark-theme{
-    background-color:black;
-    .typewriter {
-        --bgColor: black;
-    }
-    #welcomeMessage{
-        background-color:black;
-        color: white;
-    }
-    h1, h2, h3, h4, h5, h6, p, a, div, span {
-        color: white;
-    }
-}
-
-#welcomeMessage{
-    min-height: 100vh;
-    background-color: white;
-    display: flex;
-    position: relative;
-    align-items: center;
-    z-index: 99;
-    bottom: 21px;
-    .boxContainer {
-        padding: 0rem 10rem 0rem 10rem;
-        flex-direction: column;
-        color: black;
-        font-size: 55px;
-        font-weight: 500;
-    }
-}
 
 .navBar{
     display: flex;
