@@ -4,9 +4,11 @@ import './lang.json'
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
     /*Detectamos si existe la cookie, si no existe entrará en el if */
-    if (true || !document.cookie.includes('isVisited=')) {
-      /*Inicializamos las variables y establecemos que el elemento priemro tenga un display flex y un position fixed*/
-      
+    if (!document.cookie.includes('isVisited=')) {
+      //Iniciamos la creación del contenedor welcomeMessage
+      createWelcomeDom();
+      /*Inicializamos las variables y establecemos que el elemento primero tenga un display flex y un position fixed*/
+
       let welcomeBlock = document.querySelectorAll('.boxContainer');
       let btnNext = document.querySelectorAll('.nxt-elem');
       welcomeBlock[0].style.display = 'flex';
@@ -45,6 +47,29 @@ document.addEventListener('DOMContentLoaded', function() {
     //console.log(toggleButton);
   }
   
+  function createWelcomeDom(){
+      /*Iniciamos la variable para construir el contenedor*/
+      const welcomeMessageDiv = document.createElement('div');
+      welcomeMessageDiv.id = 'welcomeMessage';
+      document.body.appendChild(welcomeMessageDiv);
+
+      const welcomeMessageHTML = `
+        <div class="boxContainer" hidden>
+          <span class="typing-animation">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
+          <button class="nxt-elem">Continuar -></button>
+        </div>
+        <div class="boxContainer" hidden>
+          <span class="typing-animation">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+          <button class="nxt-elem">Continuar -></button>
+        </div>
+        <div class="boxContainer" hidden>
+          <span class="typing-animation">Hemos detectado que en tu equipo son las</span>
+          <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+          <button class="nxt-elem">Finalizar configuración</button>
+        </div>`;
+        welcomeMessageDiv.innerHTML= welcomeMessageHTML;
+  }
+
   document.querySelectorAll('.toggle-theme').forEach(function(button) {
     button.addEventListener('click', toggleTheme);
   });
