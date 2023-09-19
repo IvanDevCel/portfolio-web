@@ -1,14 +1,47 @@
+/*FONTS*/
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Thin.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Thin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*Animation*/
+
+@keyframes typing {
+    from {
+      max-width: 0;
+    }
+    to {
+      max-width: 100%;
+    }
+  }
+  
+  .typing-animation {
+    overflow: hidden;
+    animation: typing 1s steps(25);
+  }
 
 /*Tema negro de la web*/
+h1, h2, h3, h4, h5, h6, p, a, div, span {
+    font-family: 'Inter';
+}
+
 body, html {
     height: 100%;
     margin: 0;
-}
-
-.navBar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 /*Tema oscuro que hay en la web*/
@@ -27,12 +60,21 @@ body, html {
     min-height: 100vh;
     background-color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    position: relative;
     align-items: center;
+    z-index: 99;
+    bottom: 21px;
     .boxContainer {
+        padding: 0rem 10rem 0rem 10rem;
         flex-direction: column;
+        background-color: red;
         color: black;
-        font-size: 50px;
+        font-size: 60px;
+        font-weight: 500;
     }
+}
+
+.navBar{
+    display: flex;
+    justify-content: space-between;
 }

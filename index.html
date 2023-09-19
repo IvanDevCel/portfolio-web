@@ -5,34 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
   </head>
-  <script defer type="module" src="/main.js"></script>
   <body>
     <nav class="navBar">
       <span>ICS Portfolio</span>
       <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-      <select name="idiom" id="idiomSel">
-        <option value="es">Español</option>
-        <option value="en">Inglés</option>
-      </select>
+      
     </nav>
     <div id="welcomeMessage">
       <div class="boxContainer" hidden>
-        <span>Bienvenido a mi portfolio personal, Soy Iván, un desarrollador front-end</span>
+        <span class="typing-animation">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
         <button class="nxt-elem"> Continuar -></button>
       </div>
       <div class="boxContainer" hidden>
-        <span>Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+        <span class="typing-animation">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
         <button class="nxt-elem"> Continuar -></button>
       </div>
       <div class="boxContainer" hidden>
-        <span>Este es el idioma que hemos detectado en su equipo ¿Es correcto?</span>
+        <span class="typing-animation">Hemos detectado que en tu equipo son las</span>
         <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-        <select name="idiom" id="idiomSel">
-          <option value="es">Español</option>
-          <option value="en">Inglés</option>
-        </select>
         <button class="nxt-elem"> Finalizar configuración</button>
       </div>
-    </div>    
+    </div>
+    <script defer type="module" src="/main.js"></script>
   </body>
 </html>

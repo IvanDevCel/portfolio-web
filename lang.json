@@ -1,7 +1,24 @@
 {
   "es_lang":{
     "profile":{
-
+      "textone": "Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end",
+      "texttwo": "Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia",
+      "textthree": "Este es el idioma que hemos detectado en su dispositivo ¿Es el correcto?"
+    },
+    "buttons":{
+      "next": "Siguiente",
+      "endConfig": "Finalizar Configuración"
+    }
+  },
+  "en_lang":{
+    "profile":{
+      "textone": "Welcome to my portfolio personal. I am Ivan, a front-end developer",
+      "texttwo": "Before exploring my projects, we do some adjustments to improve your experience",
+      "textthree": "This is the language that we have detected in your device, is it correct?"
+    },
+    "buttons":{
+      "next": "Next",
+      "endConfig": "End Configuration"
     }
   }
 }
