@@ -18,22 +18,6 @@
     font-display: swap;
 }
 
-/*Animation*/
-
-@keyframes typing {
-    from {
-      max-width: 0;
-    }
-    to {
-      max-width: 100%;
-    }
-  }
-  
-  .typing-animation {
-    overflow: hidden;
-    animation: typing 1s steps(25);
-  }
-
 /*Tema negro de la web*/
 h1, h2, h3, h4, h5, h6, p, a, div, span {
     font-family: 'Inter';
@@ -44,9 +28,65 @@ body, html {
     margin: 0;
 }
 
+/*Typewrite effect!!*/
+
+@keyframes grow {
+    0% { max-height: var(--lineHeight); }
+    100% { max-height: calc(var(--lineHeight) * var(--lines)); }
+  }
+  
+  @keyframes carriageReturn {
+    0% { top: 0; }
+    100% { top: calc(var(--lineHeight) * var(--lines)); }
+  }
+  
+  @keyframes type {
+    0% { width: 100%; }
+    100% { width: 0%; }
+  }
+  
+  .typewriter {
+    --bgColor: white;
+    --lines: 500;
+    --lineHeight: 4.5rem;
+    --timePerLine: 3s;
+    --widthCh: auto;
+    --width: calc(var(--widthCh) * 1ch);
+    /* do not touch the time property!!! */
+    --time: calc(var(--lines) * var(--timePerLine));
+    animation: grow var(--time) steps(var(--lines));
+    animation-fill-mode: forwards;
+    background: var(--bgColor);  
+    line-height: var(--lineHeight);
+    max-height: var(--lineHeight);
+    overflow: hidden;
+    position: relative;
+    width: var(--width);
+    /* word-break: break-all; */
+  }
+  
+  .typewriter::before {
+    content: "";
+    animation: 
+      type var(--timePerLine) linear infinite, 
+      carriageReturn var(--time) steps(var(--lines)) var(--lines),
+      caret 0.5s steps(2) infinite;
+    background: var(--bgColor);
+    //border-left: 2px solid;
+    bottom: 0;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+/**/
+
 /*Tema oscuro que hay en la web*/
 .dark-theme{
     background-color:black;
+    .typewriter {
+        --bgColor: black;
+    }
     #welcomeMessage{
         background-color:black;
         color: white;
@@ -67,9 +107,8 @@ body, html {
     .boxContainer {
         padding: 0rem 10rem 0rem 10rem;
         flex-direction: column;
-        background-color: red;
         color: black;
-        font-size: 60px;
+        font-size: 55px;
         font-weight: 500;
     }
 }

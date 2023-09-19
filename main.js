@@ -4,7 +4,7 @@ import './lang.json'
 document.addEventListener('DOMContentLoaded', function() {
   function setCookie() {
     /*Detectamos si existe la cookie, si no existe entrará en el if */
-    if (!document.cookie.includes('isVisited=')) {
+    if (true || !document.cookie.includes('isVisited=')) {
       //Iniciamos la creación del contenedor welcomeMessage
       createWelcomeDom();
       /*Inicializamos las variables y establecemos que el elemento primero tenga un display flex y un position fixed*/
@@ -55,15 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const welcomeMessageHTML = `
         <div class="boxContainer" hidden>
-          <span class="typing-animation">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
+          <span class="typewriter" style="--n:64">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
           <button class="nxt-elem">Continuar -></button>
         </div>
         <div class="boxContainer" hidden>
-          <span class="typing-animation">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+          <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
           <button class="nxt-elem">Continuar -></button>
         </div>
         <div class="boxContainer" hidden>
-          <span class="typing-animation">Hemos detectado que en tu equipo son las</span>
+          <span class="typewriter">Hemos detectado que en tu equipo son las</span>
           <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
           <button class="nxt-elem">Finalizar configuración</button>
         </div>`;
