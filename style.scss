@@ -61,7 +61,7 @@ body, html {
 }
 
 /*Typewrite effect!!*/
-@keyframes grow {
+  @keyframes grow {
     0% { max-height: var(--lineHeight); }
     100% { max-height: calc(var(--lineHeight) * var(--lines)); }
   }
@@ -76,6 +76,11 @@ body, html {
     100% { width: 0%; }
   }
   
+  @keyframes blink {
+    0% { opacity: 0; }
+    100% { opacity: 1; }   
+  }
+
   .typewriter {
     --bgColor: white;
     --lines: 500;
@@ -83,7 +88,6 @@ body, html {
     --timePerLine: 3s;
     --widthCh: auto;
     --width: calc(var(--widthCh) * 1ch);
-    /* do not touch the time property!!! */
     --time: calc(var(--lines) * var(--timePerLine));
     animation: grow var(--time) steps(var(--lines));
     animation-fill-mode: forwards;
@@ -100,8 +104,8 @@ body, html {
     content: "";
     animation: 
       type var(--timePerLine) linear infinite, 
-      carriageReturn var(--time) steps(var(--lines)) var(--lines),
-      caret 0.5s steps(2) infinite;
+      carriageReturn var(--time) steps(var(--lines)) var(--lines);
+      //caret 0.5s steps(2) infinite;
     background: var(--bgColor);
     //border-left: 2px solid;
     bottom: 0;
@@ -111,6 +115,13 @@ body, html {
     width: 100%;
   }
 /**/
+
+//Hour blink effect
+
+/*.colon{
+    animation: blink 2s infinite;
+}*/
+
 
 .navBar{
     display: flex;
