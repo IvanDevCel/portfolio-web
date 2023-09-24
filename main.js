@@ -1,7 +1,7 @@
 import './style.scss';
 import './lang.json';
 
-let increase = false;
+let isExecuted = false;
 const welcomeMessageHTML = `
   <div class="boxContainer" hidden>
     <span class="typewriter" style="--n:64">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           element.addEventListener('click', () => {
             // If it's the last screen, hide the welcome message
             if (index >= welcomeBlock.length - 1) {
-              document.querySelector('#welcomeMessage').style.display = 'none';
+              document.getElementById('welcomeMessage').style.display = 'none';
             } else {
               // Show a clock with effects for the third block
               if (welcomeBlock[index + 1] == welcomeBlock[2]) {
@@ -94,16 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const colon = document.querySelector('.colon');
 
-    // If increase is not false we apply the animation
-    if(increase !== false){
-      colon.style.animation = 'blink 2s infinite';
+    // If isExecuted is not false we apply the animation
+    if(isExecuted !== false){
+      colon.style.animation = 'blink 1s infinite';
     }
     
-    // Set increase to true for subsequent calls
-    increase = true;
+    // Set isExecuted to true for subsequent calls
+    isExecuted = true;
 
     setTimeout(() => {
-      colon.style.animation = 'blink 2s infinite';
+      colon.style.animation = 'blink 1s infinite';
     }, 3000);
 
     // Schedule the function to run after the remaining seconds for the next minute
@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleTheme() {
       const bodyToggle = document.body;
       bodyToggle.classList.toggle('dark-theme');
-      console.log("clicked");
     }
 
     document.querySelectorAll('.toggle-theme').forEach((button) => {
