@@ -80,7 +80,7 @@ body, html {
     --bgColor: white;
     --lines: 500;
     --lineHeight: 4.5rem;
-    --timePerLine: 3s;
+    --timePerLine: 1.5s;
     --widthCh: auto;
     --width: calc(var(--widthCh) * 1ch);
     --time: calc(var(--lines) * var(--timePerLine));

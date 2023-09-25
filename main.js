@@ -1,10 +1,15 @@
 import './style.scss';
 import './lang.json';
 
+//Global variables
 let isExecuted = false;
+let welcomeBlockLength = 0;
+const date = new Date();
+
 const welcomeMessageHTML = `
   <div class="boxContainer" hidden>
-    <span class="typewriter" style="--n:64">Bienvenido a mi portfolio personal. Soy Iván, un desarrollador front-end</span>
+    <span class="typewriter" style="--n:64">Bienvenido a mi portfolio personal. 
+    Soy Iván, desarrollador front-end</span>
     <button class="nxt-elem">Continuar -></button>
   </div>
   <div class="boxContainer" hidden>
@@ -12,7 +17,7 @@ const welcomeMessageHTML = `
     <button class="nxt-elem">Continuar -></button>
   </div>
   <div class="boxContainer" hidden>
-    <span class="typewriter">Hemos detectado que en tu equipo son las <span id="clock"></span></span>
+    <span class="typewriter">Hemos detectado que en tu equipo son las <span id="clock"></span><span class="statusDay"></span></span>
     <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
     <button class="nxt-elem">Finalizar configuración</button>
   </div>`;
@@ -43,7 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
           // Handle button click events
           element.addEventListener('click', () => {
             // If it's the last screen, hide the welcome message
+            //With this variable what we do is equalize the index of the button to the welcomeBlockLength*1
+            welcomeBlockLength = index;
             if (index >= welcomeBlock.length - 1) {
+              
+              console.log("This block uwu" + welcomeBlockLength)
               document.getElementById('welcomeMessage').style.display = 'none';
             } else {
               // Show a clock with effects for the third block
@@ -60,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Set a cookie to mark the user's first visit
-      const date = new Date();
       date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
       const expires = 'expires=' + date.toUTCString();
       document.cookie = 'isVisited=true; ' + expires + ';';
@@ -79,19 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
    It utilizes animations to make the time display visually appealing.
   */
   function showTime() {
-    const date = new Date();
 
     // Format hours, minutes, and seconds with leading zeros if needed
     let hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     let mins = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     let secs = date.getSeconds();
-
+    
     // Calculate remaining seconds until the next minute
     let remainingSecs = 60 - secs;
 
     // Display the time in the HTML element with the ID 'clock'
     document.getElementById('clock').innerHTML = hour + '<span class="colon">:</span>' + mins;
-
+    console.log("this musts top before welcomeBlockLenght == 2");
     const colon = document.querySelector('.colon');
 
     // If isExecuted is not false we apply the animation
@@ -106,8 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
       colon.style.animation = 'blink 1s infinite';
     }, 3000);
 
+    //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration*1
+
+    if ((welcomeBlockLength) === 2) {
+      return;
+    }
+
     // Schedule the function to run after the remaining seconds for the next minute
     setTimeout(showTime, remainingSecs * 1000);
+  }
+
+  function switchThemeByTime(){
+    
   }
 
     setCookie();
