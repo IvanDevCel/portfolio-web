@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const welcomeMessageHTML = `
     <div class="boxContainer" hidden>
-      <span class="typewriter">Bienvenido a mi portfolio personal. \n Soy Iván, desarrollador Front-end</span>
+      <span class="typewriter">Bienvenido a mi portfolio personal. Soy Iván, desarrollador Front-end</span>
       <button class="nxt-elem">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
-      <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+      <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar la experiencia</span>
       <button class="nxt-elem">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /*
     This function sets a cookie to track if a user has visited the page before.
     If it's the first visit, it displays a welcome message using the createWelcomeDom() function.
-
     The welcome message is displayed only on the user's first visit and informs about the purpose of the page.
   */
   function setCookie() {
@@ -85,39 +84,39 @@ document.addEventListener('DOMContentLoaded', () => {
    It utilizes animations to make the time display visually appealing.
   */
   function showTime() {
-    // Format hours, minutes, and seconds with leading zeros if needed
-    const hour = date.getHours().toString().padStart(2, '0');
-    const mins = date.getMinutes().toString().padStart(2, '0');
+      // Format hours, minutes, and seconds with leading zeros if needed
+      const hour = date.getHours().toString().padStart(2, '0');
+      const mins = date.getMinutes().toString().padStart(2, '0');
 
-    // Calculate remaining seconds until the next minute
-    let remainingSecs = 60 - date.getSeconds();
+      // Calculate remaining seconds until the next minute
+      let remainingSecs = 60 - date.getSeconds();
 
-    // Display the time in the HTML element with the ID 'clock'
-    const isDay = hour >= 8 && hour <= 20;
-    const statusText = isDay ? 'es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
-  
-    document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins}`;
-    document.querySelector('.statusDay').innerHTML = `, ${statusText}`;
-
-    // If isExecuted is not false we apply the animation
-    document.querySelector('.colon').style.animation = isExecuted !== false ? 'blink 1s infinite': "none";
+      // Display the time in the HTML element with the ID 'clock'
+      const isDay = hour >= 8 && hour <= 20;
+      const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
     
+      document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins}`;
+      document.querySelector('.statusDay').innerHTML = `${statusText}`;
 
-    // Set isExecuted to true for subsequent calls
-    isExecuted = true;
+      // If isExecuted is not false we apply the animation
+      document.querySelector('.colon').style.animation = isExecuted !== false ? 'blink 1s infinite': "none";
+      
 
-    setTimeout(() => {
-      document.querySelector('.colon').style.animation = 'blink 1s infinite';
-    }, 2000);
+      // Set isExecuted to true for subsequent calls
+      isExecuted = true;
+
+      setTimeout(() => {
+        document.querySelector('.colon').style.animation = 'blink 1s infinite';
+      }, 2000);
 
 
-    //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration
-    if (welcomeBlockLength === 2) {
-      return;
-    }
+      //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration
+      if (welcomeBlockLength === 2) {
+        return;
+      }
 
-    // Schedule the function to run after the remaining seconds for the next minute
-    setTimeout(showTime, remainingSecs * 1000);
+      // Schedule the function to run after the remaining seconds for the next minute
+      setTimeout(showTime, remainingSecs * 1000);
   }
 
     setCookie();
