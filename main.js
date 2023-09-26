@@ -8,8 +8,7 @@ const date = new Date();
 
 const welcomeMessageHTML = `
   <div class="boxContainer" hidden>
-    <span class="typewriter" style="--n:64">Bienvenido a mi portfolio personal. 
-    Soy Iván, desarrollador front-end</span>
+    <span class="typewriter">Bienvenido a mi portfolio personal. \n Soy Iván, desarrollador Front-end</span>
     <button class="nxt-elem">Continuar -></button>
   </div>
   <div class="boxContainer" hidden>
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Display the first welcome message container for the initial interaction
         welcomeBlock[0].style.display = 'flex';
-        welcomeBlock[0].style.position = 'fixed';
 
         // Iterate through the buttons to handle interactions
         btnNext.forEach((element, index) => {
@@ -51,13 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
             //With this variable what we do is equalize the index of the button to the welcomeBlockLength*1
             welcomeBlockLength = index;
             if (index >= welcomeBlock.length - 1) {
-              
-              console.log("This block uwu" + welcomeBlockLength)
               document.getElementById('welcomeMessage').style.display = 'none';
             } else {
               // Show a clock with effects for the third block
               if (welcomeBlock[index + 1] == welcomeBlock[2]) {
                 showTime();
+                setTimeout(switchThemeByTime, 3000);
               }
               // Show the next screen and hide the current one
               welcomeBlock[index + 1].style.display = 'flex';
@@ -124,7 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function switchThemeByTime(){
-    
+    var timeArray = {
+      isDay: "Como es de día he puesto un tema de día pero puedes cambiarlo con el botón de abajo",
+      isNight: "Ya son más de las 8 de la mañana entonces he cambiado el tema a día"
+    };
+    console.log(timeArray.isDay);
+    console.log("hora del día" + date.getHours());
+    if(date.getHours() >= 9 || date.getHours() <= 8){
+      console.log("here enetr");
+      toggleTheme();
+    }
   }
 
     setCookie();
