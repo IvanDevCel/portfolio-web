@@ -1,28 +1,31 @@
 import './style.scss';
 import './lang.json';
 
-//Global variables
-let isExecuted = false;
-let welcomeBlockLength = 0;
-const date = new Date();
-
-const welcomeMessageHTML = `
-  <div class="boxContainer" hidden>
-    <span class="typewriter">Bienvenido a mi portfolio personal. \n Soy Iván, desarrollador Front-end</span>
-    <button class="nxt-elem">Continuar -></button>
-  </div>
-  <div class="boxContainer" hidden>
-    <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
-    <button class="nxt-elem">Continuar -></button>
-  </div>
-  <div class="boxContainer" hidden>
-    <span class="typewriter">Hemos detectado que en tu equipo son las <span id="clock"></span><span class="statusDay"></span></span>
-    <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-    <button class="nxt-elem">Finalizar configuración</button>
-  </div>`;
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* 
+  let isExecuted = false;
+  let welcomeBlockLength = 0;
+  const date = new Date();
+
+  const welcomeMessageHTML = `
+    <div class="boxContainer" hidden>
+      <span class="typewriter">Bienvenido a mi portfolio personal. \n Soy Iván, desarrollador Front-end</span>
+      <button class="nxt-elem">Continuar -></button>
+    </div>
+    <div class="boxContainer" hidden>
+      <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar su experiencia</span>
+      <button class="nxt-elem">Continuar -></button>
+    </div>
+    <div class="boxContainer" hidden>
+      <span class="typewriter">Hemos detectado que en tu equipo son las 
+        <span id="clock"></span>
+        <span class="statusDay"></span>
+      </span>
+      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
+      <button class="nxt-elem">Finalizar configuración</button>
+    </div>`;
+  
+  /*
     This function sets a cookie to track if a user has visited the page before.
     If it's the first visit, it displays a welcome message using the createWelcomeDom() function.
 
@@ -45,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnNext.forEach((element, index) => {
           // Handle button click events
           element.addEventListener('click', () => {
-            // If it's the last screen, hide the welcome message
             //With this variable what we do is equalize the index of the button to the welcomeBlockLength*1
             welcomeBlockLength = index;
             if (index >= welcomeBlock.length - 1) {
@@ -54,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
               // Show a clock with effects for the third block
               if (welcomeBlock[index + 1] == welcomeBlock[2]) {
                 showTime();
-                setTimeout(switchThemeByTime, 3000);
               }
               // Show the next screen and hide the current one
               welcomeBlock[index + 1].style.display = 'flex';
@@ -84,53 +85,39 @@ document.addEventListener('DOMContentLoaded', () => {
    It utilizes animations to make the time display visually appealing.
   */
   function showTime() {
-
     // Format hours, minutes, and seconds with leading zeros if needed
-    let hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-    let mins = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-    let secs = date.getSeconds();
-    
+    const hour = date.getHours().toString().padStart(2, '0');
+    const mins = date.getMinutes().toString().padStart(2, '0');
+
     // Calculate remaining seconds until the next minute
-    let remainingSecs = 60 - secs;
+    let remainingSecs = 60 - date.getSeconds();
 
     // Display the time in the HTML element with the ID 'clock'
-    document.getElementById('clock').innerHTML = hour + '<span class="colon">:</span>' + mins;
-    console.log("this musts top before welcomeBlockLenght == 2");
-    const colon = document.querySelector('.colon');
+    const isDay = hour >= 8 && hour <= 20;
+    const statusText = isDay ? 'es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
+  
+    document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins}`;
+    document.querySelector('.statusDay').innerHTML = `, ${statusText}`;
 
     // If isExecuted is not false we apply the animation
-    if(isExecuted !== false){
-      colon.style.animation = 'blink 1s infinite';
-    }
+    document.querySelector('.colon').style.animation = isExecuted !== false ? 'blink 1s infinite': "none";
     
+
     // Set isExecuted to true for subsequent calls
     isExecuted = true;
 
     setTimeout(() => {
-      colon.style.animation = 'blink 1s infinite';
-    }, 3000);
+      document.querySelector('.colon').style.animation = 'blink 1s infinite';
+    }, 2000);
 
-    //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration*1
 
-    if ((welcomeBlockLength) === 2) {
+    //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration
+    if (welcomeBlockLength === 2) {
       return;
     }
 
     // Schedule the function to run after the remaining seconds for the next minute
     setTimeout(showTime, remainingSecs * 1000);
-  }
-
-  function switchThemeByTime(){
-    var timeArray = {
-      isDay: "Como es de día he puesto un tema de día pero puedes cambiarlo con el botón de abajo",
-      isNight: "Ya son más de las 8 de la mañana entonces he cambiado el tema a día"
-    };
-    console.log(timeArray.isDay);
-    console.log("hora del día" + date.getHours());
-    if(date.getHours() >= 9 || date.getHours() <= 8){
-      console.log("here enetr");
-      toggleTheme();
-    }
   }
 
     setCookie();
