@@ -5,24 +5,25 @@ import './lang.json';
 document.addEventListener('DOMContentLoaded', () => {
   let isExecuted = false;
   let welcomeBlockLength = 0;
-  const date = new Date();
 
   const welcomeMessageHTML = `
     <div class="boxContainer" hidden>
-      <span class="typewriter">Bienvenido a mi portfolio personal. Soy Iván, desarrollador Front-end</span>
-      <button class="nxt-elem">Continuar -></button>
+      <span class="typewriter">Bienvenido a mi portfolio personal. Soy Iván, desarrollador <span>FRONT-END</span></span>
+      <button class="nxt-elem btnWlc">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
       <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar la experiencia</span>
-      <button class="nxt-elem">Continuar -></button>
+      <button class="nxt-elem btnWlc">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
       <span class="typewriter">Hemos detectado que en tu equipo son las 
         <span id="clock"></span>
         <span class="statusDay"></span>
       </span>
-      <button class="toggle-theme" value="ChangeColor">Cambiar color</button>
-      <button class="nxt-elem">Finalizar configuración</button>
+      <div class="btnGroup">
+        <button class="toggle-theme btnWlc" value="ChangeColor">Cambiar color</button>
+        <button class="nxt-elem btnWlc">Finalizar configuración</button>
+      </div>
     </div>`;
   
   /*
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Set a cookie to mark the user's first visit
+      const date = new Date();
       date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
       const expires = 'expires=' + date.toUTCString();
       document.cookie = 'isVisited=true; ' + expires + ';';
@@ -84,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
    It utilizes animations to make the time display visually appealing.
   */
   function showTime() {
+      const date = new Date();
       // Format hours, minutes, and seconds with leading zeros if needed
       const hour = date.getHours().toString().padStart(2, '0');
       const mins = date.getMinutes().toString().padStart(2, '0');
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isDay = hour >= 8 && hour <= 20;
       const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
     
-      document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins}`;
+      document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins},`;
       document.querySelector('.statusDay').innerHTML = `${statusText}`;
 
       // If isExecuted is not false we apply the animation
