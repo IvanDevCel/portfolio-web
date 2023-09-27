@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button class="nxt-elem btnWlc">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
-      <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar la experiencia</span>
+      <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar tu experiencia</span>
       <button class="nxt-elem btnWlc">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
