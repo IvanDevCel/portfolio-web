@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const welcomeMessageHTML = `
     <div class="boxContainer" hidden>
-      <span class="typewriter">Bienvenido a mi portfolio personal. Soy Iván, desarrollador <span>FRONT-END</span></span>
-      <button class="nxt-elem btnWlc">Continuar -></button>
+      <span class="typewriter">Bienvenido a mi portfolio. Soy Iván, desarrollador <span>FRONTEND</span></span>
+      <button class="nxt-elem btnWlc">Continuar ></button>
     </div>
     <div class="boxContainer" hidden>
       <span class="typewriter">Antes de explorar mis proyectos, realicemos algunos ajustes para mejorar tu experiencia</span>
-      <button class="nxt-elem btnWlc">Continuar -></button>
+      <button class="nxt-elem btnWlc">Continuar ></button>
     </div>
     <div class="boxContainer" hidden>
       <span class="typewriter">Hemos detectado que en tu dispositivo son las 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     The welcome message is displayed only on the user's first visit and informs about the purpose of the page.
   */
   function setCookie() {
-      if (!document.cookie.includes('isVisited=')) { //set true to debug the cookie
+      if (true || !document.cookie.includes('isVisited=')) { //set true to debug the cookie
         // Display the welcome message
         createWelcomeDom();
 
@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display the time in the HTML element with the ID 'clock'
     const date = new Date();
     var hour = date.getHours().toString().padStart(2, '0');
-    const isDay = hour >= 8 && hour <= 20;
-    const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
+    const isDay = hour >= 8 && hour <= 11;
+    const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 20 de la tarde he ajustado el tema para descansar tus ojos';
     document.querySelector('.statusDay').innerHTML = `${statusText}`;
     if(!isDay && isExecuted){
       setTimeout(toggleTheme, 4000);
