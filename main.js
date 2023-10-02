@@ -1,6 +1,4 @@
 import './style.scss';
-import './lang.json';
-
 
 document.addEventListener('DOMContentLoaded', () => {
   let isExecuted = false;
@@ -16,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button class="nxt-elem btnWlc">Continuar -></button>
     </div>
     <div class="boxContainer" hidden>
-      <span class="typewriter">Hemos detectado que en tu equipo son las 
+      <span class="typewriter">Hemos detectado que en tu dispositivo son las 
         <span id="clock"></span>
         <span class="statusDay"></span>
       </span>
@@ -32,12 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     The welcome message is displayed only on the user's first visit and informs about the purpose of the page.
   */
   function setCookie() {
-      // Check if the cookie doesn't exist or it's the first visit
-      if (true || !document.cookie.includes('isVisited=')) {
+      if (!document.cookie.includes('isVisited=')) { //set true to debug the cookie
         // Display the welcome message
         createWelcomeDom();
 
-        // Initialize variables and constants for further interactions
         const welcomeBlock = document.querySelectorAll('.boxContainer');
         const btnNext = document.querySelectorAll('.nxt-elem');
 
@@ -46,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Iterate through the buttons to handle interactions
         btnNext.forEach((element, index) => {
-          // Handle button click events
           element.addEventListener('click', () => {
             //With this variable what we do is equalize the index of the button to the welcomeBlockLength*1
             welcomeBlockLength = index;
@@ -56,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
               // Show a clock with effects for the third block
               if (welcomeBlock[index + 1] == welcomeBlock[2]) {
                 showTime();
+                untoggleTheme();
               }
               // Show the next screen and hide the current one
               welcomeBlock[index + 1].style.display = 'flex';
@@ -90,21 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Format hours, minutes, and seconds with leading zeros if needed
       const hour = date.getHours().toString().padStart(2, '0');
       const mins = date.getMinutes().toString().padStart(2, '0');
-
       // Calculate remaining seconds until the next minute
       let remainingSecs = 60 - date.getSeconds();
-
-      // Display the time in the HTML element with the ID 'clock'
-      const isDay = hour >= 8 && hour <= 20;
-      const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
-    
+      
       document.getElementById('clock').innerHTML = `${hour}<span class="colon">:</span>${mins},`;
-      document.querySelector('.statusDay').innerHTML = `${statusText}`;
 
       // If isExecuted is not false we apply the animation
       document.querySelector('.colon').style.animation = isExecuted !== false ? 'blink 1s infinite': "none";
       
-
       // Set isExecuted to true for subsequent calls
       isExecuted = true;
 
@@ -112,25 +101,35 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.colon').style.animation = 'blink 1s infinite';
       }, 2000);
 
-
       //We created the global variable welcomeBlockLenght to prevent the execution before click the last button of the configuration
       if (welcomeBlockLength === 2) {
         return;
       }
 
-      // Schedule the function to run after the remaining seconds for the next minute
       setTimeout(showTime, remainingSecs * 1000);
   }
 
-    setCookie();
-
-    /*Change color of the page*/
-    function toggleTheme() {
-      const bodyToggle = document.body;
-      bodyToggle.classList.toggle('dark-theme');
+  function untoggleTheme(){
+    // Display the time in the HTML element with the ID 'clock'
+    const date = new Date();
+    var hour = date.getHours().toString().padStart(2, '0');
+    const isDay = hour >= 8 && hour <= 20;
+    const statusText = isDay ? 'como es de día he mantenido un tema claro, para facilitar la lectura' : 'ya son más de las 8 de la tarde he ajustado el tema para descansar tus ojos';
+    document.querySelector('.statusDay').innerHTML = `${statusText}`;
+    if(!isDay && isExecuted){
+      setTimeout(toggleTheme, 4000);
     }
+  }
+  
+  setCookie();
 
-    document.querySelectorAll('.toggle-theme').forEach((button) => {
-      button.addEventListener('click', toggleTheme);
-    });
+  /*Change color of the page*/
+  function toggleTheme() {
+    const bodyToggle = document.body;
+    bodyToggle.classList.toggle('dark-theme');
+  }
+
+  document.querySelectorAll('.toggle-theme').forEach((button) => {
+    button.addEventListener('click', toggleTheme);
+  });
 });
